@@ -1,4 +1,4 @@
-const { Quiz, QA, createQuiz, printQuiz } = require('./lib/Quiz.js');
+const {createQuiz, selectQuiz, manageQuiz } = require('./lib/Quiz.js');
 const { prompt } = require('./lib/heplers');
 
 
@@ -11,13 +11,21 @@ async function main() {
     
     while (!quit) {
         console.clear();
-        const input = await prompt('c: Create quiz     p: Play quiz     q: quit:     ');
+        const input = await prompt('c: Create quiz     s: Select quiz     q: quit:     ');
 
         switch (input) {
-            case 'c':
-                let quiz = await createQuiz();
+            case 'c': {
+                const quiz = await createQuiz();
+                await manageQuiz(quiz);
                 quizzes.push(quiz);
                 break;
+            }
+
+            case 's': {
+                const quiz = await selectQuiz(quizzes);
+                await manageQuiz(quiz);
+                break;
+            }
 
             case 'q':
                 quit = true;
@@ -28,7 +36,6 @@ async function main() {
         }
     }
 }
-
 
 
 
