@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/thor1878/quiz-test/issues"
   },
-  "homepage": "https://github.com/thor1878/quiz-test#readme"
+  "homepage": "https://github.com/thor1878/quiz-test#readme",
+  "dependencies": {
+    "readline": "^1.3.0"
+  }
 }
